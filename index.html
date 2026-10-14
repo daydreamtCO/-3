@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Amanda ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: Georgia, serif;
+      color: #fff;
+      background: linear-gradient(
+        135deg,
+        #190b22,
+        #57203f,
+        #a34367
+      );
+      padding: 20px;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#ffc4df 1px, transparent 1px);
+      background-size: 50px 50px, 80px 80px;
+      background-position: 0 0, 25px 35px;
+      opacity: 0.4;
+      animation: sparkle 4s ease-in-out infinite alternate;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+      padding: 42px 26px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 28px;
+      background: rgba(255,255,255,0.09);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 50px rgba(255, 130, 190, 0.15);
+      animation: appear 1.2s ease both;
+    }
+
+    .small {
+      color: #ffd5e6;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .heart {
+      font-size: 65px;
+      display: block;
+      margin-bottom: 20px;
+      animation: heartbeat 1.4s infinite;
+      filter: drop-shadow(0 0 18px #ff78ad);
+    }
+
+    h1 {
+      font-size: clamp(32px, 8vw, 43px);
+      line-height: 1.2;
+      color: #fff0f6;
+      margin-bottom: 22px;
+    }
+
+    .message {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #ffe6ef;
+    }
+
+    .highlight {
+      display: block;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffb9d5;
+      margin: 24px 0;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-size: 17px;
+      color: #ffd5e6;
+      font-style: italic;
+    }
+
+    .footer {
+      margin-top: 28px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -40px;
+      z-index: 0;
+      color: #ffb9d5;
+      opacity: 0;
+      animation: floatUp 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.15); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.1); }
+    }
+
+    @keyframes sparkle {
+      from { opacity: 0.2; }
+      to { opacity: 0.55; }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.7; }
+      100% {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+
+  <main class="card">
+    <p class="small">Un mensajito para alguien especial</p>
+
+    <span class="heart">❤️</span>
+
+    <h1>Amanda,<br>te quieroooo</h1>
+
+    <p class="message">
+      No necesitas una fecha especial para que te recuerde
+      lo mucho que me importas.
+    </p>
+
+    <span class="highlight">Me haces muy feliz ♡</span>
+
+    <p class="message">
+      Gracias por ser tú, por nuestras pláticas,
+      por las risas y por hacer que hasta los días
+      más normales se sientan bonitos.
+    </p>
+
+    <p class="signature">
+      Con muchísimo cariño,<br>
+      Adrián ❤️
+    </p>
+
+    <p class="footer">TÚ Y YO, UN DÍA A LA VEZ ✨</p>
+  </main>
+
+  <script>
+    const symbols = ["♡", "♥", "✧", "❤"];
+
+    function createHeart() {
+      const heart = document.createElement("span");
+      heart.className = "floating-heart";
+      heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (14 + Math.random() * 22) + "px";
+      heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 11000);
+    }
+
+    setInterval(createHeart, 650);
+  </script>
+</body>
+</html>
+
